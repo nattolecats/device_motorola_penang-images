@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH:= $(call my-dir)
+LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter certus,$(TARGET_DEVICE)),)
+ifneq ($(filter penang,$(TARGET_DEVICE)),)
 
 FIRMWARE_IMAGES := $(wildcard $(LOCAL_PATH)/images/*)
 
@@ -23,4 +23,3 @@ $(foreach f, $(notdir $(FIRMWARE_IMAGES)), \
     $(call add-radio-file,images/$(f)))
 
 endif
-

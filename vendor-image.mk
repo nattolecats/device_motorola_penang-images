@@ -12,4 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BOARD_PREBUILT_VENDORIMAGE := device/xiaomi/certus-images/vendor.img
+BUILD_WITHOUT_VENDOR := true
+BOARD_PREBUILT_VENDORIMAGE := device/motorola/penang-images/vendor.img

@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -e
+
 cd $(dirname $0) # This fixes path restriction
 PARTS="./parts/"
 
@@ -23,7 +25,7 @@ function decompress {
 }
 
 if test -f "./vendor.img"; then
-    echo "File exists; not regenerating..."
+    echo "vendor image already exists; not regenerating..."
     exit 0
 fi
 
@@ -32,9 +34,13 @@ for part in $(find $PARTS -type f | sort); do
 	cat $part >> ./vendor.img.xz
 done
 
-for compressed_image in ./images/*.xz; do
-    echo "Decompressing $compressed_image"
-    decompress "$compressed_image"
-done
-
 decompress "./vendor.img.xz"
+
+if test -f "./images/*"; then
+    for compressed_image in ./images/*.img.xz; do
+        echo "Decompressing $compressed_image"
+        decompress "$compressed_image"
+    done
+fi
+
+echo "[i] Merging completed."

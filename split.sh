@@ -16,9 +16,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+set -e
+
 PARTS_PREFIX="parts"
 VENDOR_PATH="vendor.img"
 COMPRESSION_SUFFIX="xz"
+
+# Create folder if not exists
+mkdir -p ./parts/
 
 # Cleanup first
 rm -rf ./parts/*
